@@ -1,0 +1,56 @@
+<div class="h-full flex py-4" cdkDropListGroup>
+    @for (status of statuses; track $index) {
+        <div class="basis-0 grow-1 flex flex-col items-center p-3 gap-2" [class]="{ 'border-l-1': $index !== 0}"
+            cdkDropList [cdkDropListData]="boardCardsByStatus()[status]" (cdkDropListDropped)="onDrop($event, status)">
+            <div class="text-2xl font-bold" [class]="{ 
+                'text-gray-500': status === statusEnum.OnHold || status === statusEnum.Archived,
+                'text-orange-500': status === statusEnum.ToDo,
+                'text-blue-500': status === statusEnum.Doing,
+                'text-green-500': status === statusEnum.Done
+                }">
+                    @switch (status) {
+                        @case (statusEnum.OnHold) { On Hold }
+                        @case (statusEnum.ToDo) { To Do }
+                        @case (statusEnum.Doing) { Doing }
+                        @case (statusEnum.Done) { Done }
+                        @case (statusEnum.Archived) { Archived }
+                    }
+            </div>
+
+            @for (card of this.boardCardsByStatus()[status]; track card.id) {
+                <mat-card cdkDrag appearance="filled" class="w-full bg-sky-700! text-white">
+                    <mat-card-header>
+                        <mat-card-title>{{ card.title }}</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>{{ card.description }}</p>
+                    </mat-card-content>
+                    <mat-card-footer class="p-1">
+                        <mat-chip-set>
+                            <mat-chip [class]="ownerEnum[card.owner]">
+                                @switch (card.owner) {
+                                    @case (ownerEnum.Jacob) { Jacob }
+                                    @case (ownerEnum.Mommy) { Mommy }
+                                    @case (ownerEnum.Daddy) { Daddy }
+                                    @case (ownerEnum.MommyAndDaddy) { Mommy/Daddy }
+                                }
+                            </mat-chip>
+                            @if (card.resetInterval != null) {
+                                <mat-chip [class]="resetIntervalEnum[card.resetInterval]">
+                                   @switch (card.resetInterval) {
+                                        @case (resetIntervalEnum.Daily) { Daily }
+                                        @case (resetIntervalEnum.Weekly) { Weekly }
+                                    } 
+                                </mat-chip>
+                            }
+                        </mat-chip-set>
+                    </mat-card-footer>
+                </mat-card>
+            }
+        </div>
+    }
+</div>
+
+<button matFab class="absolute! right-2 bottom-2" (click)="onAddCard()">
+    <mat-icon>add</mat-icon>
+</button>

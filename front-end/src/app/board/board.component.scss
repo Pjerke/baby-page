@@ -1,0 +1,28 @@
+mat-chip {
+    &.Jacob {
+        background-color: rgb(4, 99, 40);
+    }
+    &.Mommy {
+        background-color: rgb(227, 231, 0);
+    }
+    &.Daddy {
+        background-color: rgb(8, 16, 121);
+    }
+    &.MommyAndDaddy {
+        background-color: rgb(119, 5, 68);
+    }
+    &.Daily {
+        background-color: rgb(180, 7, 7);
+    }
+    &.Weekly {
+        background-color: rgb(185, 95, 11);
+    }
+}
+
+.cdk-drag-preview {
+  box-shadow: 0 5px 15px rgba(0,0,0,.3);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0.3;
+}

@@ -1,0 +1,11 @@
+:host {
+    display: block;
+    height: 100%
+}
+
+.mat-drawer {
+    &.mat-sidenav {
+        background-color: #0077ff;
+        border-radius: 0;
+    }
+}

@@ -1,4 +1,7 @@
-# Angular specific
+# Python
+/back-end/app/__pycache__
+
+# Angular
 /dist/
 /out-tsc/
 /tmp/

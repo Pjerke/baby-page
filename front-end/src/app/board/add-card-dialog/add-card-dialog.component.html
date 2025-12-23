@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>Create a new task</h2>
+<mat-dialog-content>
+    <form class="flex flex-col" (submit)="onSubmit()">
+        <mat-form-field>
+            <mat-label>Title</mat-label>
+            <input matInput type="text" [field]="cardForm.title">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Description</mat-label>
+            <textarea matInput type="text" [field]="cardForm.description"></textarea>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>For who</mat-label>
+            <mat-select  [field]="cardForm.owner">
+                <mat-option [value]="ownerEnum.Jacob">Jacob</mat-option>
+                <mat-option [value]="ownerEnum.Mommy">Mommy</mat-option>
+                <mat-option [value]="ownerEnum.Daddy">Daddy</mat-option>
+                <mat-option [value]="ownerEnum.MommyAndDaddy">Mommy & Daddy</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Reset interval</mat-label>
+            <mat-select [field]="cardForm.resetInterval">
+                <mat-option [value]="resetIntervalEnum.Daily">Daily</mat-option>
+                <mat-option [value]="resetIntervalEnum.Weekly">Weekly</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button type="submit" matButton="filled">Create</button>
+    </form>
+</mat-dialog-content>
