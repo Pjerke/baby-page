@@ -45,15 +45,7 @@ def update_board_card(card: schemas.BoardCardUpdate, db: Session = Depends(get_d
     return crud.update_board_card(db, card)
 
 app.mount(
-    "/static",
-    StaticFiles(directory="app/static"),
-    name="static"
+    "/",
+    StaticFiles(directory="app/static", html=True),
+    name="spa"
 )
-
-@app.get("/")
-def serve_spa():
-    return FileResponse("app/static/index.html")
-
-@app.get("/{full_path:path}")
-def spa_fallback(full_path: str):
-    return FileResponse("app/static/index.html")
