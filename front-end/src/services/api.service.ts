@@ -11,22 +11,22 @@ export class ApiService {
     constructor(private readonly httpClient: HttpClient) {}
 
     public getAllMeasurements(): Observable<Measurement[]> {
-        return this.httpClient.get<Measurement[]>('http://localhost:8000/measurement');
+        return this.httpClient.get<Measurement[]>('/api/measurement');
     }
 
     public addMeasurement(measurement: Measurement): Observable<Measurement> {
-        return this.httpClient.post<Measurement>('http://localhost:8000/measurement', measurement);
+        return this.httpClient.post<Measurement>('/api/measurement', measurement);
     }
 
     public getAllBoardCards(): Observable<BoardCard[]> {
-        return this.httpClient.get<BoardCard[]>('http://localhost:8000/board-card');
+        return this.httpClient.get<BoardCard[]>('/api/board-card');
     }
 
     public addBoardCard(boardCard: BoardCardCreate): Observable<BoardCard> {
-        return this.httpClient.post<BoardCard>('http://localhost:8000/board-card', boardCard);
+        return this.httpClient.post<BoardCard>('/api/board-card', boardCard);
     }
 
     public updateBoardCard(boardCard: BoardCard): Observable<BoardCard> {
-        return this.httpClient.put<BoardCard>('http://localhost:8000/board-card', boardCard);
+        return this.httpClient.put<BoardCard>('/api/board-card', boardCard);
     }
 }
